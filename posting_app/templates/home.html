@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda en línea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #555;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .cta {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .cta:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tienda en línea</h1>
+    </header>
+    <nav>
+        <div class="container">
+            {% if user.is_authenticated %}
+                <a href="/salir/" class="cta">Cerrar sesión</a>
+            {% else %}
+                <a href="/registro/" class="cta">Registrarse</a>
+                <a href="/login/" class="cta">Iniciar sesión</a>
+            {% endif %}
+        </div>
+    </nav>
+    <section>
+        <div class="container">
+            <h2>Bienvenido a la página de inicio</h2>
+            {% if user.is_authenticated %}
+                <p>Hola, {{ user.username }}. ¡Bienvenido de nuevo!</p>
+            {% else %}
+                <p>Bienvenido a nuestra tienda en línea. Por favor, inicia sesión o regístrate para comenzar a comprar.</p>
+            {% endif %}
+        </div>
+    </section>
+</body>
+</html>
